@@ -15,4 +15,26 @@ public class TriangleTest {
         double expected = 8;
         assertThat(result).isCloseTo(expected, offset(0.001));
     }
+
+    @Test
+    public void when00and10and20ThenMinus1() {
+        Point a = new Point(0, 0);
+        Point b = new Point(1, 0);
+        Point c = new Point(2, 0);
+        Triangle triangle = new Triangle(a, b, c);
+        double result = triangle.area();
+        double expected = -1;
+        assertThat(result).isCloseTo(expected, offset(0.001));
+    }
+
+    @Test
+    public void when00and00and00ThenMinus1() {
+        Point a = new Point(0, 0);
+        Point b = new Point(0, 0);
+        Point c = new Point(0, 0);
+        Triangle triangle = new Triangle(a, b, c);
+        double result = triangle.area();
+        double expected = -1;
+        assertThat(result).isCloseTo(expected, offset(0.001));
+    }
 }
