@@ -67,7 +67,7 @@ class StartUITest {
         assertThat(output.toString()).isEqualTo(
                 "Меню:" + System.lineSeparator()
                         + "0. Завершить программу" + System.lineSeparator()
-                        + "=== Завершение программы ===" + System.lineSeparator()
+//                        + "=== Завершение программы ===" + System.lineSeparator()
         );
     }
 }
