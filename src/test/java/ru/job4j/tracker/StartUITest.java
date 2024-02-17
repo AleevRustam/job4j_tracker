@@ -3,18 +3,18 @@ package ru.job4j.tracker;
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.input.Mock;
-import ru.job4j.tracker.output.Console;
+import ru.job4j.tracker.input.MockInput;
+import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.Output;
-import ru.job4j.tracker.output.Stub;
+import ru.job4j.tracker.output.StubOutput;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUITest {
     @Test
     void whenCreateItem() {
-        Output output = new Console();
-        Input input = new Mock(
+        Output output = new ConsoleOutput();
+        Input input = new MockInput(
                 new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
@@ -28,11 +28,11 @@ class StartUITest {
 
     @Test
     void whenReplaceItem() {
-        Output output = new Console();
+        Output output = new ConsoleOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
-        Input input = new Mock(
+        Input input = new MockInput(
                 new String[]{"0", String.valueOf(item.getId()), "New item name", "1"}
         );
         UserAction[] actions = {
@@ -45,10 +45,10 @@ class StartUITest {
 
     @Test
     void whenDeleteItem() {
-        Output output = new Console();
+        Output output = new ConsoleOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
-        Input input = new Mock(
+        Input input = new MockInput(
                 new String[]{"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
@@ -61,8 +61,8 @@ class StartUITest {
 
     @Test
     void whenExit() {
-        Output output = new Stub();
-        Input input = new Mock(
+        Output output = new StubOutput();
+        Input input = new MockInput(
                 new String[]{"0"}
         );
         Tracker tracker = new Tracker();
@@ -79,11 +79,11 @@ class StartUITest {
 
     @Test
     void whenReplaceItemTestOutputIsSuccessfully() {
-        Output output = new Stub();
+        Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
-        Input input = new Mock(
+        Input input = new MockInput(
                 new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -107,11 +107,11 @@ class StartUITest {
 
     @Test
     void whenFindAllItemsOutputIsSuccessfully() {
-        Output output = new Stub();
+        Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Item two = tracker.add(new Item("test2"));
-        Input input = new Mock(
+        Input input = new MockInput(
                 new String[]{"0", "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -136,10 +136,10 @@ class StartUITest {
 
     @Test
     void whenFindByNameTestIsSuccessfully() {
-        Output output = new Stub();
+        Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input input = new Mock(
+        Input input = new MockInput(
                 new String[]{"0", one.getName(), "1"}
         );
         UserAction[] actions = new UserAction[]{
@@ -163,10 +163,10 @@ class StartUITest {
 
     @Test
     void whenFindByIdTestIsSuccessfully() {
-        Output output = new Stub();
+        Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input input = new Mock(
+        Input input = new MockInput(
                 new String[]{"0", String.valueOf(one.getId()), "1"}
         );
 
@@ -191,8 +191,8 @@ class StartUITest {
 
     @Test
     void whenInvalidExit() {
-        Output output = new Stub();
-        Input input = new Mock(
+        Output output = new StubOutput();
+        Input input = new MockInput(
                 new String[]{"7", "0"}
         );
         Tracker tracker = new Tracker();
