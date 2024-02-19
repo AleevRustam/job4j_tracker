@@ -15,7 +15,6 @@ public final class SingleTracker {
         return instance;
     }
 
-
     public Item add(Item item) {
         return tracker.add(item);
     }
