@@ -17,20 +17,6 @@ public class StartUI {
         this.output = output;
     }
 
-//    public void init(Input input, Tracker tracker, UserAction[] actions) {
-//        boolean run = true;
-//        while (run) {
-//            showMenu(actions);
-//            int select = input.askInt("Выбрать: ");
-//            if (select < 0 || select >= actions.length) {
-//                output.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1));
-//                continue;
-//            }
-//            UserAction action = actions[select];
-//            run = action.execute(input, tracker);
-//        }
-//    }
-
     public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
@@ -45,35 +31,12 @@ public class StartUI {
         }
     }
 
-//    private void showMenu(UserAction[] actions) {
-//        output.println("Меню:");
-//        for (int index = 0; index < actions.length; index++) {
-//            output.println(index + ". " + actions[index].name());
-//        }
-//    }
-
     private void showMenu(List<UserAction> actions) {
         output.println("Меню:");
         for (int index = 0; index < actions.size(); index++) {
             output.println(index + ". " + actions.get(index).name());
         }
     }
-
-//    public static void main(String[] args) {
-//        Output output = new ConsoleOutput();
-//        Input input = new ValidateInput(output, new ConsoleInput());
-//        Tracker tracker = new Tracker();
-//        UserAction[] actions = {
-//                new Create(output),
-//                new FindAll(output),
-//                new Replace(output),
-//                new Delete(output),
-//                new FindById(output),
-//                new FindByName(output),
-//                new Exit(output)
-//        };
-//        new StartUI(output).init(input, tracker, actions);
-//    }
 
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
