@@ -20,8 +20,7 @@ public class AnalyzeByMap {
             for (Subject subject : subjects) {
                 sum += subject.score();
             }
-            double avg = (double) sum / subjects.size();
-            result.add(new Label(pupil.name(), avg));
+            result.add(new Label(pupil.name(), (double) sum / subjects.size()));
         }
         return result;
     }
@@ -32,15 +31,11 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             List<Subject> subjectsListOnePupil = pupil.subjects();
             for (Subject subject : subjectsListOnePupil) {
-                String key = subject.name();
-                Integer value = subjectsMapAllPupils.getOrDefault(key, 0) + subject.score();
-                subjectsMapAllPupils.put(key, value);
+                subjectsMapAllPupils.put(subject.name(), subjectsMapAllPupils.getOrDefault(subject.name(), 0) + subject.score());
             }
         }
         for (Map.Entry<String, Integer> entry : subjectsMapAllPupils.entrySet()) {
-            String key = entry.getKey();
-            double value = (double) entry.getValue() / pupils.size();
-            result.add(new Label(key, value));
+            result.add(new Label(entry.getKey(), (double) entry.getValue() / pupils.size()));
         }
         return result;
     }
@@ -65,15 +60,11 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             List<Subject> subjectsListOnePupil = pupil.subjects();
             for (Subject subject : subjectsListOnePupil) {
-                String key = subject.name();
-                Integer value = subjectsMapAllPupils.getOrDefault(key, 0) + subject.score();
-                subjectsMapAllPupils.put(key, value);
+                subjectsMapAllPupils.put(subject.name(), subjectsMapAllPupils.getOrDefault(subject.name(), 0) + subject.score());
             }
         }
         for (Map.Entry<String, Integer> entry : subjectsMapAllPupils.entrySet()) {
-            String key = entry.getKey();
-            Integer value = entry.getValue();
-            result.add(new Label(key, value));
+            result.add(new Label(entry.getKey(), entry.getValue()));
         }
         result.sort(Comparator.naturalOrder());
         return result.get(result.size() - 1);
