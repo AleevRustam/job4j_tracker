@@ -26,13 +26,13 @@ public class StringCompareTest {
     }
 
     @Test
-    public void whenLeftLessThanRightResultShouldBePositive() {
+    public void whenLeftGraterThanRightResultShouldBePositive() {
         StringCompare compare = new StringCompare();
         int result = compare.compare(
                 "Petrov",
                 "Ivanova"
         );
-        assertThat(result).isLessThan(0);
+        assertThat(result).isGreaterThan(0);
     }
 
     @Test
@@ -46,12 +46,12 @@ public class StringCompareTest {
     }
 
     @Test
-    public void secondCharOfLeftGreaterThanRightShouldBeNegative() {
+    public void secondCharOfLeftLessThanRightShouldBeNegative() {
         StringCompare compare = new StringCompare();
         int result = compare.compare(
                 "Patrova",
                 "Petrov"
         );
-        assertThat(result).isGreaterThan(0);
+        assertThat(result).isLessThan(0);
     }
 }
