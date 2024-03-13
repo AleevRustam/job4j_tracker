@@ -7,7 +7,7 @@ public class LexSort implements Comparator<String> {
     public int compare(String left, String right) {
         int leftNum = stringToArrayInt(left);
         int rightNum = stringToArrayInt(right);
-        return leftNum - rightNum;
+        return Integer.compare(leftNum, rightNum);
     }
 
     public int stringToArrayInt(String string) {
