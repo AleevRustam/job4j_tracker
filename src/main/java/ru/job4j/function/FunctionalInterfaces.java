@@ -20,7 +20,6 @@ public class FunctionalInterfaces {
 
         BiPredicate<Integer, String> biPredicate = (key, value) -> key % 2 == 0 || value.length() == 4;
         for (Integer key : map.keySet()) {
-            String value = map.get(key);
             if (biPredicate.test(key, map.get(key))) {
                 System.out.println("key: " + key + " value: " + map.get(key));
             }
