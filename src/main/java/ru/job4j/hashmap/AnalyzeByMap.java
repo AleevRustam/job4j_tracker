@@ -1,7 +1,6 @@
 package ru.job4j.hashmap;
 
 import java.util.*;
-import java.util.function.BiFunction;
 
 public class AnalyzeByMap {
     public static double averageScore(List<Pupil> pupils) {
@@ -33,12 +32,9 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             List<Subject> subjectsListOnePupil = pupil.subjects();
             for (Subject subject : subjectsListOnePupil) {
-                BiFunction<Integer, Integer, Integer> function = (oldValue, newValue) -> oldValue + newValue;
-                subjectsMapAllPupils.merge(subject.name(), subject.score(), function);
+                subjectsMapAllPupils.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + newValue);
             }
-
         }
-
         for (Map.Entry<String, Integer> entry : subjectsMapAllPupils.entrySet()) {
             result.add(new Label(entry.getKey(), (double) entry.getValue() / pupils.size()));
         }
