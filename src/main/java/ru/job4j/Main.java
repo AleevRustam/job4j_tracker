@@ -45,6 +45,12 @@ public class Main {
         Report csvReport = new CSVReport(reportEngine);
         System.out.println(csvReport.generate(filter));
 
+        Report jsonReport = new JSONReport(reportEngine);
+        System.out.println(jsonReport.generate(filter));
+
+        Report xmlReport = new XMLReport(reportEngine);
+        System.out.println(xmlReport.generate(filter));
+
     }
 
 }
