@@ -28,8 +28,6 @@ public class XMLReport implements Report {
     }
 
     private String convertToXml(Employees employeesWrapper) {
-
-
         try {
             JAXBContext context = JAXBContext.newInstance(Employees.class);
             Marshaller marshaller = context.createMarshaller();
