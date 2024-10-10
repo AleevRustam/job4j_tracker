@@ -6,8 +6,4 @@ public interface Parking {
     ArrayList<Boolean> getSpot();
 
     boolean parkCar(AbstractCar car);
-
-//    int getAvailableCarSpots();
-//
-//    int getAvailableTruckSpots();
 }
