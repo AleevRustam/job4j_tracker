@@ -1,12 +1,10 @@
 package ru.job4j.parking.entity;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
 class PrivateParkingTest {
 
     private Parking parking;
@@ -23,8 +21,8 @@ class PrivateParkingTest {
     }
 
     @Test
-    public void whenParkingIsFullThenFalse() {
-        for (int i = 0; i < parking.getSpot().size(); i++) {
+    public void whenParkingForCarIsFullThenFalse() {
+        for (int i = 0; i < 100; i++) {
             AbstractCar car = new Car(1);
             assertTrue(parking.parkCar(car));
         }

@@ -8,10 +8,10 @@ public class ParkingControl {
     private Parking parking;
 
     public ParkingControl(Parking parking) {
-
+        this.parking = parking;
     }
 
     public boolean addCar(AbstractCar car) {
-        return false;
+        return parking.parkCar(car);
     }
 }

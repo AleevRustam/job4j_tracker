@@ -1,16 +1,20 @@
 package ru.job4j.parking.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class AbstractParking implements Parking {
+public abstract class AbstractParking implements Parking {
 
-    @Override
-    public ArrayList<Boolean> getSpot() {
-        return null;
+    private List<Boolean> spots;
+    private int carSize;
+
+    public AbstractParking(int carSize) {
+        this.carSize = carSize;
     }
 
     @Override
-    public boolean parkCar(AbstractCar car) {
-        return false;
+    public List<Boolean> getSpot() {
+        return spots;
     }
+
+    public abstract boolean parkCar(AbstractCar car);
 }

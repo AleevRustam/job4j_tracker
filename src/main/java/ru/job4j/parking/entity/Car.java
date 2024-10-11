@@ -5,4 +5,9 @@ public class Car extends AbstractCar {
     public Car(int size) {
         super(size);
     }
+
+    @Override
+    public int getSize() {
+        return 1;
+    }
 }
