@@ -7,6 +7,7 @@ import ru.job4j.store.store.Trash;
 import ru.job4j.store.store.Warehouse;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControlQuality {
@@ -22,6 +23,21 @@ public class ControlQuality {
                 store.add(food);
                 break;
             }
+        }
+    }
+
+    public void resort() {
+        List<Food> allFoods = new ArrayList<>();
+        for (Store store : stores) {
+            allFoods.addAll(store.findAll());
+            List<Food> foods = store.findAll();
+            for (Food food : foods) {
+                store.delete(food.getName());
+            }
+        }
+
+        for (Food food : allFoods) {
+            distribute(food);
         }
     }
 
@@ -62,6 +78,16 @@ public class ControlQuality {
         controlQuality.distribute(fruit);
         controlQuality.distribute(vegetable);
 
+        System.out.println("До пересортировки:");
+        System.out.println("Warehouse: " + warehouse.findAll());
+        System.out.println("Shop: " + shop.findAll());
+        System.out.println("Trash: " + trash.findAll());
+
+        fruit.setExpiryDate(LocalDate.now().minusDays(1));
+
+        controlQuality.resort();
+
+        System.out.println("После пересортировки:");
         System.out.println("Warehouse: " + warehouse.findAll());
         System.out.println("Shop: " + shop.findAll());
         System.out.println("Trash: " + trash.findAll());
