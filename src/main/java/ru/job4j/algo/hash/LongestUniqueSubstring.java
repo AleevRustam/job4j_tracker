@@ -16,7 +16,7 @@ public class LongestUniqueSubstring {
         for (int right = 0; right < str.length(); right++) {
             char currentChar = str.charAt(right);
             if (charIndexMap.containsKey(currentChar) && charIndexMap.get(currentChar) >= left) {
-                left= charIndexMap.get(currentChar) + 1;
+                left = charIndexMap.get(currentChar) + 1;
             }
             charIndexMap.put(currentChar, right);
 

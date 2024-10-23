@@ -20,7 +20,7 @@ public class PartitionLabels {
         int start = 0;
         int end = 0;
         for (int i = 0; i < s.length(); i++) {
-            end = Math.max(end, lastIndex[s.charAt(i) -'a']);
+            end = Math.max(end, lastIndex[s.charAt(i) - 'a']);
 
             if (i == end) {
                 partitions.add(end - start + 1);
