@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Solution {
+
     public static void main(String[] args) {
         int[] nums = new int[] {3, 6, 10, 1};
         System.out.println(Arrays.toString(nums));
         System.out.println(maximumGap(nums));
         System.out.println(maxGapByHash(nums));
     }
-
 
     public static int maximumGap(int[] nums) {
         Arrays.sort(nums);
@@ -26,7 +26,6 @@ public class Solution {
 
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
-
 
         if (nums.length < 2) {
             return 0;
@@ -45,7 +44,7 @@ public class Solution {
         int maxGap = 0;
         int previous = min;
 
-        for (int i = min; i <= max ; i++) {
+        for (int i = min; i <= max; i++) {
             if (set.contains(i)) {
                 maxGap = Math.max(maxGap, i - previous);
                 previous = i;
