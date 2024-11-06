@@ -134,4 +134,30 @@ class BinarySearchTreeTest {
         tree.put(4);
         assertThat(tree.remove(10)).isFalse();
     }
+
+    @Test
+    void whenClearTreeThenTreeIsEmpty() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6}) {
+            tree.put(element);
+        }
+
+        assertThat(tree.inSymmetricalOrder()).hasSize(3);
+
+        tree.clear();
+
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+    }
+
+    @Test
+    void whenClearTreeMultipleTimesThenNoErrors() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6}) {
+            tree.put(element);
+        }
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+    }
 }
