@@ -97,4 +97,41 @@ class BinarySearchTreeTest {
         assertThat(tree.inPostOrder()).hasSize(7)
                 .containsExactly(1, 3, 2, 5, 7, 6, 4);
     }
+
+    @Test
+    void whenRemoveNodeWithOneChildThenTreeUpdates() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 1, 5}) {
+            tree.put(element);
+        }
+        assertThat(tree.remove(6)).isTrue();
+        assertThat(tree.inSymmetricalOrder()).containsExactly(1, 2, 4, 5);
+    }
+
+    @Test
+    void whenRemoveNodeWithTwoChildrenThenTreeUpdates() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 1, 3, 5, 7}) {
+            tree.put(element);
+        }
+        assertThat(tree.remove(4)).isTrue();
+        assertThat(tree.inSymmetricalOrder()).containsExactly(1, 2, 3, 5, 6, 7);
+    }
+
+    @Test
+    void whenRemoveRootNodeThenTreeUpdates() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int element : new int[]{4, 2, 6, 1, 3, 5, 7}) {
+            tree.put(element);
+        }
+        assertThat(tree.remove(4)).isTrue();
+        assertThat(tree.inSymmetricalOrder()).containsExactly(1, 2, 3, 5, 6, 7);
+    }
+
+    @Test
+    void whenRemoveNonExistentElementThenReturnFalse() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.put(4);
+        assertThat(tree.remove(10)).isFalse();
+    }
 }
